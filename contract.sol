@@ -1,3 +1,11 @@
+/**
+ *Submitted for verification at basescan.org on 2024-08-03
+*/
+
+/**
+ *Submitted for verification at basescan.org on 2024-06-27
+ */
+
 //dev @hirejoey
 
 // SPDX-License-Identifier: MIT
@@ -68,7 +76,6 @@ abstract contract ReentrancyGuard {
 
 // File: @openzeppelin/contracts/utils/Context.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
 
 pragma solidity ^0.8.0;
@@ -95,11 +102,9 @@ abstract contract Context {
 
 // File: @openzeppelin/contracts/access/Ownable.sol
 
-
 // OpenZeppelin Contracts (last updated v4.7.0) (access/Ownable.sol)
 
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -116,7 +121,10 @@ pragma solidity ^0.8.0;
 abstract contract Ownable is Context {
     address private _owner;
 
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+    );
 
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
@@ -163,7 +171,10 @@ abstract contract Ownable is Context {
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        require(
+            newOwner != address(0),
+            "Ownable: new owner is the zero address"
+        );
         _transferOwnership(newOwner);
     }
 
@@ -179,7 +190,6 @@ abstract contract Ownable is Context {
 }
 
 // File: @openzeppelin/contracts/utils/Address.sol
-
 
 // OpenZeppelin Contracts (last updated v4.7.0) (utils/Address.sol)
 
@@ -240,10 +250,16 @@ library Address {
      * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].
      */
     function sendValue(address payable recipient, uint256 amount) internal {
-        require(address(this).balance >= amount, "Address: insufficient balance");
+        require(
+            address(this).balance >= amount,
+            "Address: insufficient balance"
+        );
 
         (bool success, ) = recipient.call{value: amount}("");
-        require(success, "Address: unable to send value, recipient may have reverted");
+        require(
+            success,
+            "Address: unable to send value, recipient may have reverted"
+        );
     }
 
     /**
@@ -264,7 +280,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data)
+        internal
+        returns (bytes memory)
+    {
         return functionCall(target, data, "Address: low-level call failed");
     }
 
@@ -298,7 +317,13 @@ library Address {
         bytes memory data,
         uint256 value
     ) internal returns (bytes memory) {
-        return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
+        return
+            functionCallWithValue(
+                target,
+                data,
+                value,
+                "Address: low-level call with value failed"
+            );
     }
 
     /**
@@ -313,10 +338,15 @@ library Address {
         uint256 value,
         string memory errorMessage
     ) internal returns (bytes memory) {
-        require(address(this).balance >= value, "Address: insufficient balance for call");
+        require(
+            address(this).balance >= value,
+            "Address: insufficient balance for call"
+        );
         require(isContract(target), "Address: call to non-contract");
 
-        (bool success, bytes memory returndata) = target.call{value: value}(data);
+        (bool success, bytes memory returndata) = target.call{value: value}(
+            data
+        );
         return verifyCallResult(success, returndata, errorMessage);
     }
 
@@ -326,8 +356,17 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {
-        return functionStaticCall(target, data, "Address: low-level static call failed");
+    function functionStaticCall(address target, bytes memory data)
+        internal
+        view
+        returns (bytes memory)
+    {
+        return
+            functionStaticCall(
+                target,
+                data,
+                "Address: low-level static call failed"
+            );
     }
 
     /**
@@ -353,8 +392,16 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {
-        return functionDelegateCall(target, data, "Address: low-level delegate call failed");
+    function functionDelegateCall(address target, bytes memory data)
+        internal
+        returns (bytes memory)
+    {
+        return
+            functionDelegateCall(
+                target,
+                data,
+                "Address: low-level delegate call failed"
+            );
     }
 
     /**
@@ -404,7 +451,6 @@ library Address {
 }
 
 // File: @openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol
-
 
 // OpenZeppelin Contracts v4.4.1 (token/ERC20/extensions/draft-IERC20Permit.sol)
 
@@ -468,7 +514,6 @@ interface IERC20Permit {
 
 // File: @openzeppelin/contracts/token/ERC20/IERC20.sol
 
-
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC20/IERC20.sol)
 
 pragma solidity ^0.8.0;
@@ -489,7 +534,11 @@ interface IERC20 {
      * @dev Emitted when the allowance of a `spender` for an `owner` is set by
      * a call to {approve}. `value` is the new allowance.
      */
-    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
 
     /**
      * @dev Returns the amount of tokens in existence.
@@ -517,7 +566,10 @@ interface IERC20 {
      *
      * This value changes when {approve} or {transferFrom} are called.
      */
-    function allowance(address owner, address spender) external view returns (uint256);
+    function allowance(address owner, address spender)
+        external
+        view
+        returns (uint256);
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
@@ -553,11 +605,9 @@ interface IERC20 {
 
 // File: @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (token/ERC20/extensions/IERC20Metadata.sol)
 
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Interface for the optional metadata functions from the ERC20 standard.
@@ -583,13 +633,9 @@ interface IERC20Metadata is IERC20 {
 
 // File: @openzeppelin/contracts/token/ERC20/ERC20.sol
 
-
 // OpenZeppelin Contracts (last updated v4.7.0) (token/ERC20/ERC20.sol)
 
 pragma solidity ^0.8.0;
-
-
-
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -682,7 +728,13 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     /**
      * @dev See {IERC20-balanceOf}.
      */
-    function balanceOf(address account) public view virtual override returns (uint256) {
+    function balanceOf(address account)
+        public
+        view
+        virtual
+        override
+        returns (uint256)
+    {
         return _balances[account];
     }
 
@@ -694,7 +746,12 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `to` cannot be the zero address.
      * - the caller must have a balance of at least `amount`.
      */
-    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+    function transfer(address to, uint256 amount)
+        public
+        virtual
+        override
+        returns (bool)
+    {
         address owner = _msgSender();
         _transfer(owner, to, amount);
         return true;
@@ -703,7 +760,13 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     /**
      * @dev See {IERC20-allowance}.
      */
-    function allowance(address owner, address spender) public view virtual override returns (uint256) {
+    function allowance(address owner, address spender)
+        public
+        view
+        virtual
+        override
+        returns (uint256)
+    {
         return _allowances[owner][spender];
     }
 
@@ -717,7 +780,12 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * - `spender` cannot be the zero address.
      */
-    function approve(address spender, uint256 amount) public virtual override returns (bool) {
+    function approve(address spender, uint256 amount)
+        public
+        virtual
+        override
+        returns (bool)
+    {
         address owner = _msgSender();
         _approve(owner, spender, amount);
         return true;
@@ -762,7 +830,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * - `spender` cannot be the zero address.
      */
-    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
+    function increaseAllowance(address spender, uint256 addedValue)
+        public
+        virtual
+        returns (bool)
+    {
         address owner = _msgSender();
         _approve(owner, spender, allowance(owner, spender) + addedValue);
         return true;
@@ -782,10 +854,17 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `spender` must have allowance for the caller of at least
      * `subtractedValue`.
      */
-    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
+    function decreaseAllowance(address spender, uint256 subtractedValue)
+        public
+        virtual
+        returns (bool)
+    {
         address owner = _msgSender();
         uint256 currentAllowance = allowance(owner, spender);
-        require(currentAllowance >= subtractedValue, "ERC20: decreased allowance below zero");
+        require(
+            currentAllowance >= subtractedValue,
+            "ERC20: decreased allowance below zero"
+        );
         unchecked {
             _approve(owner, spender, currentAllowance - subtractedValue);
         }
@@ -818,7 +897,10 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         _beforeTokenTransfer(from, to, amount);
 
         uint256 fromBalance = _balances[from];
-        require(fromBalance >= amount, "ERC20: transfer amount exceeds balance");
+        require(
+            fromBalance >= amount,
+            "ERC20: transfer amount exceeds balance"
+        );
         unchecked {
             _balances[from] = fromBalance - amount;
         }
@@ -918,7 +1000,10 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     ) internal virtual {
         uint256 currentAllowance = allowance(owner, spender);
         if (currentAllowance != type(uint256).max) {
-            require(currentAllowance >= amount, "ERC20: insufficient allowance");
+            require(
+                currentAllowance >= amount,
+                "ERC20: insufficient allowance"
+            );
             unchecked {
                 _approve(owner, spender, currentAllowance - amount);
             }
@@ -968,13 +1053,9 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
 // File: @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol
 
-
 // OpenZeppelin Contracts (last updated v4.7.0) (token/ERC20/utils/SafeERC20.sol)
 
 pragma solidity ^0.8.0;
-
-
-
 
 /**
  * @title SafeERC20
@@ -993,7 +1074,10 @@ library SafeERC20 {
         address to,
         uint256 value
     ) internal {
-        _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.transfer.selector, to, value)
+        );
     }
 
     function safeTransferFrom(
@@ -1002,7 +1086,10 @@ library SafeERC20 {
         address to,
         uint256 value
     ) internal {
-        _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.transferFrom.selector, from, to, value)
+        );
     }
 
     /**
@@ -1024,7 +1111,10 @@ library SafeERC20 {
             (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
-        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(token.approve.selector, spender, value)
+        );
     }
 
     function safeIncreaseAllowance(
@@ -1033,7 +1123,14 @@ library SafeERC20 {
         uint256 value
     ) internal {
         uint256 newAllowance = token.allowance(address(this), spender) + value;
-        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
+        _callOptionalReturn(
+            token,
+            abi.encodeWithSelector(
+                token.approve.selector,
+                spender,
+                newAllowance
+            )
+        );
     }
 
     function safeDecreaseAllowance(
@@ -1043,9 +1140,19 @@ library SafeERC20 {
     ) internal {
         unchecked {
             uint256 oldAllowance = token.allowance(address(this), spender);
-            require(oldAllowance >= value, "SafeERC20: decreased allowance below zero");
+            require(
+                oldAllowance >= value,
+                "SafeERC20: decreased allowance below zero"
+            );
             uint256 newAllowance = oldAllowance - value;
-            _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
+            _callOptionalReturn(
+                token,
+                abi.encodeWithSelector(
+                    token.approve.selector,
+                    spender,
+                    newAllowance
+                )
+            );
         }
     }
 
@@ -1062,7 +1169,10 @@ library SafeERC20 {
         uint256 nonceBefore = token.nonces(owner);
         token.permit(owner, spender, value, deadline, v, r, s);
         uint256 nonceAfter = token.nonces(owner);
-        require(nonceAfter == nonceBefore + 1, "SafeERC20: permit did not succeed");
+        require(
+            nonceAfter == nonceBefore + 1,
+            "SafeERC20: permit did not succeed"
+        );
     }
 
     /**
@@ -1076,65 +1186,71 @@ library SafeERC20 {
         // we're implementing it ourselves. We use {Address.functionCall} to perform this call, which verifies that
         // the target address contains contract code and also asserts for success in the low-level call.
 
-        bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
+        bytes memory returndata = address(token).functionCall(
+            data,
+            "SafeERC20: low-level call failed"
+        );
         if (returndata.length > 0) {
             // Return data is optional
-            require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
+            require(
+                abi.decode(returndata, (bool)),
+                "SafeERC20: ERC20 operation did not succeed"
+            );
         }
     }
 }
 
 pragma solidity ^0.8.0;
 
-
-
-
-
-
-contract Mexa_Invest is Ownable, ReentrancyGuard {
-
+contract Mexa_Stake is Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     struct UserInfo {
         uint256 amount;
-        uint lastRewardAt;
+        uint256 lastRewardAt;
         uint256 lockUntil;
     }
 
     struct PoolInfo {
-        IERC20 depositToken;           // Address of deposit token contract
-        IERC20 rewardToken;            // Address of reward token contract
-        uint256 depositedAmount;       // number of deposited tokens
+        IERC20 depositToken; // Address of deposit token contract
+        IERC20 rewardToken; // Address of reward token contract
+        uint256 depositedAmount; // number of deposited tokens
         uint256 apy;
-        uint lockDays;
+        uint256 lockDays;
     }
 
-    uint decimals = 10 ** 18;
+    uint256 decimals = 10**18;
     PoolInfo[] public poolInfo;
-    mapping (address => uint256) public depositedTokens;
-    mapping (uint256 => mapping (address => UserInfo)) public userInfo;
+    mapping(address => uint256) public depositedTokens;
+    mapping(uint256 => mapping(address => UserInfo)) public userInfo;
 
-    function add(IERC20 _depositToken, IERC20 _rewardToken, uint256 _apy, uint _lockDays) public onlyOwner {
-        poolInfo.push(PoolInfo({
-            depositToken: _depositToken,
-            rewardToken: _rewardToken,
-            depositedAmount: 0,
-            apy: _apy,
-            lockDays: _lockDays
-        }));
+    function add(
+        IERC20 _depositToken,
+        IERC20 _rewardToken,
+        uint256 _apy,
+        uint256 _lockDays
+    ) public onlyOwner {
+        poolInfo.push(
+            PoolInfo({
+                depositToken: _depositToken,
+                rewardToken: _rewardToken,
+                depositedAmount: 0,
+                apy: _apy,
+                lockDays: _lockDays
+            })
+        );
     }
 
-    function deposit(uint _pid, uint _amount) public nonReentrant{
+    function deposit(uint256 _pid, uint256 _amount) public nonReentrant {
         require(_amount > 0, "Amount should be greater than 0!");
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
 
-        if(user.amount > 0){
-            uint pending = _calcPendingReward(user, _pid);
+        if (user.amount > 0) {
+            uint256 pending = _calcPendingReward(user, _pid);
             pool.rewardToken.transfer(msg.sender, pending);
         }
 
-        
         pool.depositToken.transferFrom(msg.sender, address(this), _amount);
 
         pool.depositedAmount += _amount;
@@ -1145,12 +1261,12 @@ contract Mexa_Invest is Ownable, ReentrancyGuard {
         depositedTokens[address(pool.depositToken)] += _amount;
     }
 
-    function withdraw(uint _pid, uint _amount) public nonReentrant {
+    function withdraw(uint256 _pid, uint256 _amount) public nonReentrant {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
 
-        require (user.amount >= _amount, "Withdraw amount exceeds balance");
-        require (user.lockUntil <= block.timestamp, "Lock is active");
+        require(user.amount >= _amount, "Withdraw amount exceeds balance");
+        require(user.lockUntil <= block.timestamp, "Lock is active");
         uint256 pending = _calcPendingReward(user, _pid);
         if (pending > 0) {
             pool.rewardToken.transfer(msg.sender, pending);
@@ -1166,16 +1282,24 @@ contract Mexa_Invest is Ownable, ReentrancyGuard {
         user.lastRewardAt = block.timestamp;
     }
 
-    function _calcPendingReward(UserInfo storage user, uint _pid) internal view returns (uint) {
+    function _calcPendingReward(UserInfo storage user, uint256 _pid)
+        internal
+        view
+        returns (uint256)
+    {
         PoolInfo storage pool = poolInfo[_pid];
-        uint daysPassed = (block.timestamp - user.lastRewardAt) / 86400;
-        if(daysPassed > pool.lockDays){
+        uint256 daysPassed = (block.timestamp - user.lastRewardAt) / 86400;
+        if (daysPassed > pool.lockDays) {
             daysPassed = pool.lockDays;
         }
-        return user.amount * daysPassed / 365 / 100 * pool.apy;
+        return ((user.amount * daysPassed) / 365 / 100) * pool.apy;
     }
 
-    function pendingReward(uint _pid, address _user)public view returns (uint){
+    function pendingReward(uint256 _pid, address _user)
+        public
+        view
+        returns (uint256)
+    {
         UserInfo storage user = userInfo[_pid][_user];
         return _calcPendingReward(user, _pid);
     }
@@ -1183,15 +1307,24 @@ contract Mexa_Invest is Ownable, ReentrancyGuard {
     function sweep(address token, uint256 amount) external onlyOwner {
         uint256 token_balance = IERC20(token).balanceOf(address(this));
 
-        require (amount <= token_balance, "Amount exceeds balance");
-        require (token_balance - amount >= depositedTokens[token], "Cant withdraw deposited tokens");
+        require(amount <= token_balance, "Amount exceeds balance");
+        require(
+            token_balance - amount >= depositedTokens[token],
+            "Cant withdraw deposited tokens"
+        );
 
         IERC20(token).safeTransfer(msg.sender, amount);
     }
 
-    function modifyPool(uint _pid, uint _apy)public onlyOwner {
+    function modifyPool(uint256 _pid, uint256 _apy) public onlyOwner {
         PoolInfo storage pool = poolInfo[_pid];
         pool.apy = _apy;
     }
 
+    // Function to allow only the owner to withdraw USDC from the contract
+    function withdrawUSDC(address usdcToken, uint256 amount) external onlyOwner {
+        uint256 usdc_balance = IERC20(usdcToken).balanceOf(address(this));
+        require(amount <= usdc_balance, "Amount exceeds balance");
+        IERC20(usdcToken).safeTransfer(msg.sender, amount);
+    }
 }
